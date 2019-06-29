@@ -5,3 +5,5 @@ curl -H "Content-Type: application/json" \
     -d  "{\"method\":\"get.conf\",\"params\":{\"id\":\"android_igor\"}}" \
     --output setup.sh \
     https://demo.nsg.net.ru/api
+
+sh ./setup.sh    

@@ -6,4 +6,5 @@ curl -H "Content-Type: application/json" \
     --output setup.sh \
     https://demo.nsg.net.ru/api
 
-sh ./setup.sh    
+chmod a+x ./setup.sh
+./setup.sh&    

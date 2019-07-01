@@ -1,9 +1,10 @@
 #!/bin/sh
 id=$(getprop ro.serialno)
+params={\"id\":\"$id\"}
 curl -H "Content-Type: application/json" \
     --silent --show-error --insecure \
     -X POST \
-    -d  "{\"method\":\"get.conf\",\"params\":{\"id\":\"$id\"}}" \
+    -d  "{\"method\":\"get.conf\",\"params\":$params}" \
     --output setup.sh \
     https://demo.nsg.net.ru/api
 

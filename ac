@@ -10,11 +10,11 @@ if [ L$1 = Ll ]
 then
   echo "Wait for location ..."
   loc=$(termux-location)
-  #loc={\"latitude\":60,\"longitude\":30}
+  #loc={\"latitude\":60.1,\"longitude\":30.1}
   lat=$(echo $loc | jq .latitude)
   lng=$(echo $loc | jq .longitude)
   echo $lat $lng
-  params={\"id\":\"$id\",\"latitude\":$lat,\"longitude\":$lng}
+  params={\"id\":\"$id\",\"latitude\":\"$lat\",\"longitude\":\"$lng\"}
 else
   params={\"id\":\"$id\"}
 fi

@@ -1,5 +1,10 @@
 #!/bin/sh
-id=$(getprop ro.serialno)
+id=$(getprop ro.isn)
+if [ -z "$id"]
+then
+   id=$(getprop ro.serialno)
+fi
+
 params={\"id\":\"$id\"}
 curl -H "Content-Type: application/json" \
     --silent --show-error --insecure \
@@ -9,4 +14,4 @@ curl -H "Content-Type: application/json" \
     https://demo.nsg.net.ru/api
 
 chmod a+x ./setup.sh
-./setup.sh&    
+./setup.sh&

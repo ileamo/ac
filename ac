@@ -1,5 +1,6 @@
 #!/bin/sh
 id=$(getprop ro.isn)
+#id=android_test
 if [ -z "$id" ]
 then
    id=$(getprop ro.serialno)
@@ -7,14 +8,17 @@ fi
 
 if [ L$1 = Ll ]
 then
+  echo "Wait for location ..."
   loc=$(termux-location)
+  #loc={\"latitude\":60,\"longitude\":30}
   lat=$(echo $loc | jq .latitude)
   lng=$(echo $loc | jq .longitude)
+  echo $lat $lng
   params={\"id\":\"$id\",\"latitude\":$lat,\"longitude\":$lng}
 else
   params={\"id\":\"$id\"}
 fi
-
+echo $params
 curl -H "Content-Type: application/json" \
     --silent --show-error --insecure \
     -X POST \

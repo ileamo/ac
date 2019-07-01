@@ -1,11 +1,21 @@
 #!/bin/sh
 id=$(getprop ro.isn)
-if [ -z "$id"]
+id=android
+if [ -z "$id" ]
 then
    id=$(getprop ro.serialno)
 fi
 
-params={\"id\":\"$id\"}
+if [ $1 = l ]
+then
+  loc=$(termux-location)
+  lat=$(echo $loc | jq .latitude)
+  lng=$(echo $loc | jq .longitude)
+  params={\"id\":\"$id\",\"latitude\":$lat,\"longitude\":$lng}
+else
+  params={\"id\":\"$id\"}
+fi
+
 curl -H "Content-Type: application/json" \
     --silent --show-error --insecure \
     -X POST \

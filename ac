@@ -1,12 +1,11 @@
 #!/bin/sh
 id=$(getprop ro.isn)
-id=android
 if [ -z "$id" ]
 then
    id=$(getprop ro.serialno)
 fi
 
-if [ $1 = l ]
+if [ L$1 = Ll ]
 then
   loc=$(termux-location)
   lat=$(echo $loc | jq .latitude)

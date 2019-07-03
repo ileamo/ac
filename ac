@@ -18,7 +18,7 @@ then
 else
   params={\"id\":\"$id\"}
 fi
-echo $params
+#echo $params
 curl -H "Content-Type: application/json" \
     --silent --show-error --insecure \
     -X POST \
